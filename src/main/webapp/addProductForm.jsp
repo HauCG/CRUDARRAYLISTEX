@@ -5,7 +5,7 @@
   Time: 11:25 AM
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html; charset=UTF-8" language="java"  pageEncoding="UTF-8" %>
+<%@ page contentType="text/html; charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -21,22 +21,17 @@
         Thêm Sản Phẩm
     </h1>
     <form action="products" method="post">
-        <input type="hidden" name="action" value="addProduct" />
+        <input type="hidden" name="action" value="addProduct"/>
         <div class="mb-3">
             <label for="name" class="form-label">Tên Sản Phẩm</label>
             <input type="text" class="form-control" id="name" name="name" required>
         </div>
 
 
-
-
         <div class="mb-3">
             <label for="price" class="form-label">Giá</label>
-            <input type="number" step="0.01" class="form-control" id="price" name="price" required>
+            <input type="text" step="0.01" class="form-control" id="price" name="price" required>
         </div>
-
-
-
 
 
         <div class="mb-3">
@@ -56,14 +51,23 @@
 
 <%--sử lý nhập vào giá tự thay đổi thành định dạng đúng--%>
 <script>
-    document.getElementById("price").addEventListener('input', convertToVndFormat);
 
-    function convertToVndFormat(e) {
+    document.getElementById("price").addEventListener("input", formatCurrency);
 
+    function formatCurrency() {
+        let inputNumber = document.getElementById("price");
+        let onlyNumber = inputNumber.value.split(",").join("").replace(/[^0-9]/g, '');
+        inputNumber.value = Number(onlyNumber).toLocaleString('vi-VN', {style: 'currency', currency: 'VND'});
     }
 </script>
-
-
-
 </body>
 </html>
+
+
+
+
+
+
+
+
+

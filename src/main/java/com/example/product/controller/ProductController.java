@@ -100,7 +100,13 @@ public class ProductController extends HttpServlet {
         response.setContentType("text/html; charset=UTF-8");
         int id = productService.getNextId();
         String name = request.getParameter("name");
-        double price = Double.parseDouble(request.getParameter("price"));
+
+
+        String priceHavePattern = request.getParameter("price");
+        String priceOnlyHaveNumber = priceHavePattern.replaceAll("[^0-9]", "");
+        double price = Double.parseDouble(priceOnlyHaveNumber);
+
+
         String color = request.getParameter("color");
         String description = request.getParameter("description");
         Product product = new Product(id, name, price, color, description);
@@ -153,8 +159,9 @@ public class ProductController extends HttpServlet {
 
 // todo: sửa phần sửa tiền thêm chữ vnd (OK)
 // todo: lưu tiền bị lỗi dạng đang text sang dạng number mới lưu được xử lý ở edit  (OK)
-// todo: thêm nút cuộn lên đầu  ()
 // todo: tìm theo tên  (OK)
+// todo: thêm tự định dạng số khi thêm mới nhập sản phẩm  (OK)
+
+// todo: thêm nút cuộn lên đầu  ()
 // todo: thêm giá cao thấp thấp cao ()
 // todo: theo màu - lặp lấy màu riêng xong hiện ra list lăn xuống   ()
-// todo: thêm tự định dạng số khi thêm mới nhập sản phẩm  ()
