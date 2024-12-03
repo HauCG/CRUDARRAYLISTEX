@@ -1,5 +1,7 @@
 package com.example.product.controller;
 
+import com.example.product.DAO.ProductDAO;
+import com.example.product.DAO.ProductDaoImpl;
 import com.example.product.model.Product;
 import com.example.product.service.ProductService;
 import com.example.product.service.ProductServiceImpl;
@@ -11,11 +13,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.List;
 
 @WebServlet(name = "ProductController", urlPatterns = "/products")
 public class ProductController extends HttpServlet {
     private final ProductService productService = new ProductServiceImpl();
+    private final ProductDAO productDao = new ProductDaoImpl();
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
@@ -27,29 +31,47 @@ public class ProductController extends HttpServlet {
             action = "listProducts";
         }
         switch (action) {
-            case "listProducts":
-                listProducts(request, response);
-                break;
             case "viewProduct":
-                viewProduct(request, response);
+                try {
+                    viewProduct(request, response);
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
                 break;
             case "addProductForm":
                 showAddProductForm(request, response);
                 break;
             case "editProductForm":
-                showEditProductForm(request, response);
+                try {
+                    showEditProductForm(request, response);
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
                 break;
             case "deleteProduct":
-                deleteProduct(request, response);
+                try {
+                    deleteProduct(request, response);
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
                 break;
             case "searchProducts":
-                searchProducts(request, response);
+                try {
+                    searchProducts(request, response);
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
                 break;
             default:
-                listProducts(request, response);
+                try {
+                    listProducts(request, response);
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
                 break;
         }
     }
+
 
 
     @Override
@@ -63,25 +85,37 @@ public class ProductController extends HttpServlet {
         }
         switch (action) {
             case "addProduct":
-                addProduct(request, response);
+                try {
+                    addProduct(request, response);
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
                 break;
             case "editProduct":
-                editProduct(request, response);
+                try {
+                    editProduct(request, response);
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
                 break;
             default:
-                listProducts(request, response);
+                try {
+                    listProducts(request, response);
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
                 break;
         }
     }
 
-    private void listProducts(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    private void listProducts(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
         List<Product> products = productService.findAll();
         request.setAttribute("products", products);
         RequestDispatcher dispatcher = request.getRequestDispatcher("listProducts.jsp");
         dispatcher.forward(request, response);
     }
 
-    private void viewProduct(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    private void viewProduct(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
         int productId = Integer.parseInt(request.getParameter("id"));
         Product product = productService.getProductById(productId);
         request.setAttribute("product", product);
@@ -94,7 +128,7 @@ public class ProductController extends HttpServlet {
         dispatcher.forward(request, response);
     }
 
-    private void addProduct(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    private void addProduct(HttpServletRequest request, HttpServletResponse response) throws IOException, SQLException {
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
         response.setContentType("text/html; charset=UTF-8");
@@ -114,7 +148,7 @@ public class ProductController extends HttpServlet {
         response.sendRedirect("products?action=listProducts");
     }
 
-    private void showEditProductForm(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    private void showEditProductForm(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
         int productId = Integer.parseInt(request.getParameter("id"));
         Product product = productService.getProductById(productId);
         request.setAttribute("product", product);
@@ -122,7 +156,7 @@ public class ProductController extends HttpServlet {
         dispatcher.forward(request, response);
     }
 
-    private void editProduct(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    private void editProduct(HttpServletRequest request, HttpServletResponse response) throws IOException, SQLException {
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
         response.setContentType("text/html; charset=UTF-8");
@@ -141,13 +175,13 @@ public class ProductController extends HttpServlet {
         response.sendRedirect("products?action=listProducts");
     }
 
-    private void deleteProduct(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    private void deleteProduct(HttpServletRequest request, HttpServletResponse response) throws IOException, SQLException {
         int productId = Integer.parseInt(request.getParameter("id"));
         productService.deleteProduct(productId);
         response.sendRedirect("products?action=listProducts");
     }
 
-    private void searchProducts(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    private void searchProducts(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
         String keyword = request.getParameter("keyword");
         List<Product> products = productService.searchProducts(keyword);
         request.setAttribute("products", products);

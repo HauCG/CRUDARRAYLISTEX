@@ -23,7 +23,6 @@
     <h1 class="text-center text-primary fw-bold display-4 shadow-lg p-3 bg-light rounded">
         Danh sách sản phẩm
     </h1>
-<%--    seach sp--%>
 
     <form action="products" method="get" class="mb-3">
         <input type="hidden" name="action" value="searchProducts"/>
@@ -45,19 +44,26 @@
         </tr>
         </thead>
         <tbody>
-        <c:forEach var="product" items="${products}">
+        <c:if test="${not empty products}">
+            <c:forEach var="product" items="${products}">
+                <tr>
+                    <td>${product.productId}</td>
+                    <td>${product.productName}</td>
+                    <td><fmt:formatNumber value="${product.productPrice}" type="currency" currencySymbol="₫" /></td>
+                    <td>${product.productColor}</td>
+                    <td>
+                        <a href="products?action=editProductForm&id=${product.productId}" class="btn btn-warning btn-sm me-2">Sửa</a>
+                        <a href="products?action=deleteProduct&id=${product.productId}" class="btn btn-danger btn-sm me-2" onclick="return confirm('Bạn có chắc muốn xóa sản phẩm này không?')">Xóa</a>
+                        <a href="products?action=viewProduct&id=${product.productId}" class="btn btn-info btn-sm">Chi tiết</a>
+                    </td>
+                </tr>
+            </c:forEach>
+        </c:if>
+        <c:if test="${empty products}">
             <tr>
-                <td>${product.productId}</td>
-                <td>${product.productName}</td>
-                <td><fmt:formatNumber value="${product.productPrice}" type="currency" currencySymbol="₫" /></td>
-                <td>${product.productColor}</td>
-                <td>
-                    <a href="products?action=editProductForm&id=${product.productId}" class="btn btn-warning btn-sm me-2">Sửa</a>
-                    <a href="products?action=deleteProduct&id=${product.productId}" class="btn btn-danger btn-sm me-2" onclick="return confirm('Bạn có chắc muốn xóa sản phẩm này không?')">Xóa</a>
-                    <a href="products?action=viewProduct&id=${product.productId}" class="btn btn-info btn-sm">Chi tiết</a>
-                </td>
+                <td colspan="5" class="text-danger text-center">Không tìm thấy sản phẩm.</td>
             </tr>
-        </c:forEach>
+        </c:if>
         </tbody>
     </table>
 </div>

@@ -1,19 +1,20 @@
 package com.example.product.model;
 
 public class Product {
-    int productId;
-    String productName;
-    Double productPrice;
-    String productColor;
-    String productDescription;
+    private int productId;
+    private String productName;
+    private double productPrice;
+    private String productColor;
+    private String productDescription;
 
-    public Product(int productId, String productName, Double productPrice, String productColor, String productDescription) {
+    public Product(int productId, String productName, double productPrice, String productColor, String productDescription) {
         this.productId = productId;
         this.productName = productName;
         this.productPrice = productPrice;
         this.productColor = productColor;
         this.productDescription = productDescription;
     }
+
 
     public int getProductId() {
         return productId;
@@ -31,11 +32,11 @@ public class Product {
         this.productName = productName;
     }
 
-    public Double getProductPrice() {
+    public double getProductPrice() {
         return productPrice;
     }
 
-    public void setProductPrice(Double productPrice) {
+    public void setProductPrice(double productPrice) {
         this.productPrice = productPrice;
     }
 

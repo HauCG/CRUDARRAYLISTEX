@@ -5,11 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a2e8dd5c-7b2a-46c5-b6c5-2d762d02fc9f" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/product/DAO/ProductDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/product/DAO/ProductDaoImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/product/connection/DatabaseConnection.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/product/controller/ProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/product/controller/ProductController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/product/model/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/product/model/Product.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/product/service/ProductService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/product/service/ProductService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/product/service/ProductServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/product/service/ProductServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/addProductForm.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/addProductForm.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/listProducts.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/listProducts.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,13 +30,16 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Interface" />
-        <option value="Class" />
         <option value="Jsp File" />
+        <option value="Class" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/src/main/java/com/example/product/DAO/ProductDaoImpl.java" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="LogFilters">
     <option name="FILTER_ERRORS" value="false" />
@@ -178,7 +186,11 @@
       <updated>1732842801319</updated>
       <workItem from="1732842802349" duration="28341000" />
       <workItem from="1733064175770" duration="474000" />
-      <workItem from="1733065011261" duration="4530000" />
+      <workItem from="1733065011261" duration="5330000" />
+      <workItem from="1733103161757" duration="1406000" />
+      <workItem from="1733110878792" duration="2101000" />
+      <workItem from="1733124177121" duration="3840000" />
+      <workItem from="1733191385481" duration="2449000" />
     </task>
     <servers />
   </component>
