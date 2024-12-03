@@ -40,6 +40,7 @@
             <th>Tên Sản Phẩm</th>
             <th>Giá Sản Phẩm</th>
             <th>Màu Sản Phẩm</th>
+            <th>Hình Ảnh</th>
             <th>Chức Năng</th>
         </tr>
         </thead>
@@ -51,6 +52,7 @@
                     <td>${product.productName}</td>
                     <td><fmt:formatNumber value="${product.productPrice}" type="currency" currencySymbol="₫" /></td>
                     <td>${product.productColor}</td>
+                    <td><img src="${product.productImgLink}" alt="Product Image" style="height: 100px; width: auto;"></td>
                     <td>
                         <a href="products?action=editProductForm&id=${product.productId}" class="btn btn-warning btn-sm me-2">Sửa</a>
                         <a href="products?action=deleteProduct&id=${product.productId}" class="btn btn-danger btn-sm me-2" onclick="return confirm('Bạn có chắc muốn xóa sản phẩm này không?')">Xóa</a>

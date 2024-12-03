@@ -6,15 +6,24 @@ public class Product {
     private double productPrice;
     private String productColor;
     private String productDescription;
+    private String productImgLink;
 
-    public Product(int productId, String productName, double productPrice, String productColor, String productDescription) {
+    public Product(int productId, String productName, double productPrice, String productColor, String productDescription, String productImgLink) {
         this.productId = productId;
         this.productName = productName;
         this.productPrice = productPrice;
         this.productColor = productColor;
         this.productDescription = productDescription;
+        this.productImgLink = productImgLink;
     }
 
+    public String getProductImgLink() {
+        return productImgLink;
+    }
+
+    public void setProductImgLink(String productImgLink) {
+        this.productImgLink = productImgLink;
+    }
 
     public int getProductId() {
         return productId;

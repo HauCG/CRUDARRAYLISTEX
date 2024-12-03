@@ -52,6 +52,16 @@
             </div>
         </div>
     </form>
+
+    <script>
+        document.getElementById("price").addEventListener("input", formatCurrency);
+
+        function formatCurrency() {
+            let inputNumber = document.getElementById("price");
+            let onlyNumber = inputNumber.value.split(",").join("").replace(/[^0-9]/g, '');
+            inputNumber.value = Number(onlyNumber).toLocaleString('vi-VN', {style: 'currency', currency: 'VND'});
+        }
+    </script>
 </div>
 </body>
 </html>

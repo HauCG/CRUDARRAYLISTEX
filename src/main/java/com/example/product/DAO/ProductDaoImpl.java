@@ -22,7 +22,8 @@ public class ProductDaoImpl implements ProductDAO {
                     rs.getString("productName"),
                     rs.getDouble("productPrice"),
                     rs.getString("productColor"),
-                    rs.getString("productDescription")
+                    rs.getString("productDescription"),
+                    rs.getString("productImgLink")
             );
             products.add(product);
         }
@@ -41,7 +42,8 @@ public class ProductDaoImpl implements ProductDAO {
                     rs.getString("productName"),
                     rs.getDouble("productPrice"),
                     rs.getString("productColor"),
-                    rs.getString("productDescription")
+                    rs.getString("productDescription"),
+                    rs.getString("productImgLink")
             );
         }
         return null;
@@ -50,24 +52,26 @@ public class ProductDaoImpl implements ProductDAO {
     @Override
     public void addProduct(Product product) throws SQLException {
         Connection connection = databaseConnection.getConnection();
-        PreparedStatement statement = connection.prepareStatement("INSERT INTO Product (productId, productName, productPrice,productColor, productDescription) VALUES (?, ?, ?, ?, ?)");
+        PreparedStatement statement = connection.prepareStatement("INSERT INTO Product (productId, productName, productPrice,productColor, productDescription, productImgLink) VALUES (?, ?, ?, ?, ?, ?)");
         statement.setInt(1, product.getProductId());
         statement.setString(2, product.getProductName());
         statement.setDouble(3, product.getProductPrice());
         statement.setString(4, product.getProductColor());
         statement.setString(5, product.getProductDescription());
+        statement.setString(6, product.getProductImgLink());
         statement.executeUpdate();
     }
 
     @Override
     public void updateProduct(Product product) throws SQLException {
         Connection connection = databaseConnection.getConnection();
-        PreparedStatement statement = connection.prepareStatement("UPDATE Product SET productName = ?, productPrice = ?, productDescription = ?,productColor = ? WHERE productId = ?");
+        PreparedStatement statement = connection.prepareStatement("UPDATE Product SET productName = ?, productPrice = ?, productDescription = ?,productColor = ?, productImgLink = ? WHERE productId = ?");
         statement.setString(1, product.getProductName());
         statement.setDouble(2, product.getProductPrice());
         statement.setString(4, product.getProductColor());
         statement.setString(3, product.getProductDescription());
         statement.setInt(5, product.getProductId());
+        statement.setString(6, product.getProductImgLink());
         statement.executeUpdate();
     }
 
@@ -93,7 +97,8 @@ public class ProductDaoImpl implements ProductDAO {
                     rs.getString("productName"),
                     rs.getDouble("productPrice"),
                     rs.getString("productColor"),
-                    rs.getString("productDescription")
+                    rs.getString("productDescription"),
+                    rs.getString("ProductImgLink")
             );
             products.add(product);
         }

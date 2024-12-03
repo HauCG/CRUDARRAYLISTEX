@@ -143,7 +143,8 @@ public class ProductController extends HttpServlet {
 
         String color = request.getParameter("color");
         String description = request.getParameter("description");
-        Product product = new Product(id, name, price, color, description);
+        String imgLink = request.getParameter("imgLink");
+        Product product = new Product(id, name, price, color, description, imgLink);
         productService.addProduct(product);
         response.sendRedirect("products?action=listProducts");
     }
@@ -169,8 +170,10 @@ public class ProductController extends HttpServlet {
 
 
         String color = request.getParameter("color");
+
         String description = request.getParameter("description");
-        Product product = new Product(id, name, price, color, description);
+        String imgLink = request.getParameter("imgLink");
+        Product product = new Product(id, name, price, color, description, imgLink);
         productService.updateProduct(product);
         response.sendRedirect("products?action=listProducts");
     }
