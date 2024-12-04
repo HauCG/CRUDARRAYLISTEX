@@ -24,7 +24,7 @@
     <h1 class="text-center text-primary fw-bold display-4 shadow-lg p-3 bg-light rounded">
         Chỉnh Sửa Sản Phẩm
     </h1>
-    <form action="products" method="post">
+    <form action="h_store" method="post">
         <input type="hidden" name="action" value="editProduct"/>
         <input type="hidden" name="id" value="${product.productId}"/>
         <div class="mb-3">
@@ -45,9 +45,17 @@
             <textarea class="form-control" id="description" name="description" rows="4"
                       required>${product.productDescription}</textarea>
         </div>
+        <div class="mb-3">
+            <label for="imgLink" class="form-label">Link Ảnh</label>
+            <input type="text" class="form-control" id="imgLink" name="imgLink" value="${product.productImgLink}" required>
+            <div class="mt-2">
+                <label class="form-label">Ảnh Hiện Tại:</label><br>
+                <img src="${product.productImgLink}" alt="Product Image" style="max-height: 200px; width: auto;" class="border">
+            </div>
+        </div>
         <div class="mt-4">
             <div class="float-end">
-                <a href="products?action=listProducts" class="btn btn-secondary ">Quay lại danh sách sản phẩm</a>
+                <a href="h_store?action=listProducts" class="btn btn-secondary ">Quay lại danh sách sản phẩm</a>
                 <button type="submit" class="btn btn-primary me-2">Lưu Thay Đổi</button>
             </div>
         </div>

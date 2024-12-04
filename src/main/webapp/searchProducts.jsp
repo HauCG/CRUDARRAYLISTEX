@@ -23,14 +23,13 @@
     <h1 class="text-center text-primary fw-bold display-4 shadow-lg p-3 bg-light rounded">
         Danh sách sản phẩm
     </h1>
-    <%--    seach sp--%>
-
-    <form action="products" method="get" class="mb-3">
+    <%-- Search sản phẩm --%>
+    <form action="h_store" method="get" class="mb-3">
         <input type="hidden" name="action" value="searchProducts"/>
         <div class="input-group">
             <input type="text" class="form-control" name="keyword" placeholder="Tìm sản phẩm theo tên..." required>
             <button class="btn btn-primary me-2" type="submit">Tìm kiếm</button>
-            <a href="products?action=addProductForm" class="btn btn-success">Thêm sản phẩm</a>
+            <a href="h_store?action=addProductForm" class="btn btn-success">Thêm sản phẩm</a>
         </div>
     </form>
 
@@ -41,6 +40,7 @@
             <th>Tên Sản Phẩm</th>
             <th>Giá Sản Phẩm</th>
             <th>Màu Sản Phẩm</th>
+            <th>Ảnh Sản Phẩm</th>
             <th>Chức Năng</th>
         </tr>
         </thead>
@@ -52,16 +52,19 @@
                 <td><fmt:formatNumber value="${product.productPrice}" type="currency" currencySymbol="₫" /></td>
                 <td>${product.productColor}</td>
                 <td>
-                    <a href="products?action=editProductForm&id=${product.productId}" class="btn btn-warning btn-sm me-2">Sửa</a>
-                    <a href="products?action=deleteProduct&id=${product.productId}" class="btn btn-danger btn-sm me-2" onclick="return confirm('Bạn có chắc muốn xóa sản phẩm này không?')">Xóa</a>
-                    <a href="products?action=viewProduct&id=${product.productId}" class="btn btn-info btn-sm">Chi tiết</a>
+                    <img src="${product.productImgLink}" alt="Ảnh sản phẩm" style="max-height: 100px; width: auto;" class="border">
+                </td>
+                <td>
+                    <a href="h_store?action=editProductForm&id=${product.productId}" class="btn btn-warning btn-sm me-2">Sửa</a>
+                    <a href="h_store?action=deleteProduct&id=${product.productId}" class="btn btn-danger btn-sm me-2" onclick="return confirm('Bạn có chắc muốn xóa sản phẩm này không?')">Xóa</a>
+                    <a href="h_store?action=viewProduct&id=${product.productId}" class="btn btn-info btn-sm">Chi tiết</a>
                 </td>
             </tr>
         </c:forEach>
         </tbody>
     </table>
     <div class="mt-4">
-        <a href="products?action=listProducts" class="btn btn-secondary float-end">Quay lại danh sách sản phẩm</a>
+        <a href="h_store?action=listProducts" class="btn btn-secondary float-end">Quay lại danh sách sản phẩm</a>
     </div>
 </div>
 </body>

@@ -1,7 +1,7 @@
-package com.example.product.service;
+package com.example.product.service.product;
 
-import com.example.product.DAO.ProductDAO;
-import com.example.product.DAO.ProductDaoImpl;
+import com.example.product.DAO.product.ProductDAO;
+import com.example.product.DAO.product.ProductDaoImpl;
 import com.example.product.model.Product;
 
 import java.sql.SQLException;
@@ -11,8 +11,8 @@ public class ProductServiceImpl implements ProductService {
     private final ProductDAO productDao = new ProductDaoImpl();
 
     @Override
-    public List<Product> findAll() throws SQLException {
-        return productDao.findAll();
+    public List<Product> findAllProducts() throws SQLException {
+        return productDao.findAllProducts();
     }
 
     @Override
@@ -21,8 +21,8 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public int getNextId() throws SQLException {
-        List<Product> products = productDao.findAll();
+    public int getNextProductId() throws SQLException {
+        List<Product> products = productDao.findAllProducts();
         return products.stream().mapToInt(Product::getProductId).max().orElse(0) + 1;
     }
 

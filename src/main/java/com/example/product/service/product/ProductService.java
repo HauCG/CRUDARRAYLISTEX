@@ -1,4 +1,4 @@
-package com.example.product.service;
+package com.example.product.service.product;
 
 import com.example.product.model.Product;
 
@@ -6,11 +6,11 @@ import java.sql.SQLException;
 import java.util.List;
 
 public interface ProductService {
-    List<Product> findAll() throws SQLException;
+    List<Product> findAllProducts() throws SQLException;
 
     Product getProductById(int productId) throws SQLException;
 
-    int getNextId() throws SQLException;
+    int getNextProductId() throws SQLException;
 
     void addProduct(Product product) throws SQLException;
 

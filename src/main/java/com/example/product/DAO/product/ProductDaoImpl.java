@@ -1,4 +1,4 @@
-package com.example.product.DAO;
+package com.example.product.DAO.product;
 
 import com.example.product.connection.DatabaseConnection;
 import com.example.product.model.Product;
@@ -11,7 +11,7 @@ public class ProductDaoImpl implements ProductDAO {
     private final DatabaseConnection databaseConnection = new DatabaseConnection();
 
     @Override
-    public List<Product> findAll() throws SQLException {
+    public List<Product> findAllProducts() throws SQLException {
         Connection connection = databaseConnection.getConnection();
         PreparedStatement statement = connection.prepareStatement("SELECT * FROM Product");
         ResultSet rs = statement.executeQuery();
@@ -65,13 +65,13 @@ public class ProductDaoImpl implements ProductDAO {
     @Override
     public void updateProduct(Product product) throws SQLException {
         Connection connection = databaseConnection.getConnection();
-        PreparedStatement statement = connection.prepareStatement("UPDATE Product SET productName = ?, productPrice = ?, productDescription = ?,productColor = ?, productImgLink = ? WHERE productId = ?");
+        PreparedStatement statement = connection.prepareStatement("UPDATE Product SET productName = ?, productPrice = ?, productDescription = ?, productColor = ?, productImgLink = ? WHERE productId = ?");
         statement.setString(1, product.getProductName());
         statement.setDouble(2, product.getProductPrice());
-        statement.setString(4, product.getProductColor());
         statement.setString(3, product.getProductDescription());
-        statement.setInt(5, product.getProductId());
-        statement.setString(6, product.getProductImgLink());
+        statement.setString(4, product.getProductColor());
+        statement.setString(5, product.getProductImgLink());
+        statement.setInt(6, product.getProductId());
         statement.executeUpdate();
     }
 

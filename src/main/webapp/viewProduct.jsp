@@ -21,6 +21,7 @@
                     <p class="card-text"><strong>Giá:</strong> <fmt:formatNumber value="${product.productPrice}" type="currency" currencySymbol="₫" /></p>
                     <p class="card-text"><strong>Màu sắc:</strong> ${product.productColor}</p>
                     <p class="card-text"><strong>Mô tả:</strong> ${product.productDescription}</p>
+                    <img src="${product.productImgLink}" alt="Ảnh sản phẩm" style="max-height: 100px; width: auto;" class="border">
                 </div>
             </div>
         </c:when>
@@ -29,7 +30,7 @@
         </c:otherwise>
     </c:choose>
     <div class="mt-4">
-        <a href="products?action=listProducts" class="btn btn-secondary float-end">Quay lại danh sách sản phẩm</a>
+        <a href="h_store?action=listProducts" class="btn btn-secondary float-end">Quay lại danh sách sản phẩm</a>
     </div>
 </div>
 
